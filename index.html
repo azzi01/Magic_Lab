@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Lab - pH Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WELCOME TO THE MAGIC LAB</h1>
+        <p>Can you guess the mysterious code:</p>
+        <input type="number" id="phInput" placeholder="Enter pH value (0-14)">
+        <button onclick="checkPH()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkPH() {
+            let pH = parseFloat(document.getElementById("phInput").value);
+            let resultText = "";
+
+            if (isNaN(pH)) {
+                resultText = "Nice try! Try to guess the secret code.";
+            } else if (pH < 0 || pH > 14) {
+                resultText = "NICE TRY, KEEP GUESSING. YOU'RE GETTING CLOSER.";
+            } else if (pH < 7) {
+                resultText = "The magic solution is Acid.";
+            } else if (pH === 7) {
+                resultText = "The magic solution is Neutral.";
+            } else {
+                resultText = "The magic solution is Base.";
+            }
+
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+</body>
+</html>
